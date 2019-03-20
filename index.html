@@ -2,11 +2,65 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS homework</title>
 </head>
 <body>
+    <script>
+        'use strict';
 
+        // 1 задание
+
+        console.log(4 + 2); // 6. Самое простое сложение
+
+        console.log('строка' + ' и строка'); // 'строка и строка'. Если применить + к строкам, то произойдет конкатенация строк
+
+        console.log('4' + 2); // '42'. Если в выражении есть число и строка, то число преобразуется в строку.
+
+        // 2 задание
+
+        var person = {};
+
+        person.name = 'Андрей';
+
+        console.log(person.age); // undefined
+
+        console.log(person.name); // 'Андрей'
+        delete person.name;
+        console.log(person.name); // undefined
+
+        // 3 задание
+
+        var x = 'first x value',
+            y = 'first y value';
+
+        function updateX() {
+            x = 'new x value';
+            var y = 'new y value';
+        }
+
+        console.log(x); // 'first x value'
+        console.log(y); // 'first y value'
+        updateX();
+        console.log(x); // 'new x value'
+        console.log(y); // 'first y value'
+
+        // 4 задание
+
+        function countWallsArea(roomWidth, roomLength, roomHeight) {
+            var firstWallArea = roomWidth * roomHeight,
+                secondWallArea = roomLength * roomHeight;
+            return (firstWallArea + secondWallArea) * 2
+        }
+
+        function countNeededNumOfWallpaperRolls(roomWidth, roomLength, roomHeight, rollWidth, rollLength) {
+            var wallsArea = countWallsArea(roomWidth, roomLength, roomHeight),
+                rollArea = rollWidth * rollLength,
+                neededNumOfRolls = wallsArea / rollArea;
+            return Math.ceil(neededNumOfRolls)
+        }
+
+        console.log(countNeededNumOfWallpaperRolls(13, 18, 3.5, 1, 6)); // 37
+    </script>
 </body>
 </html>
