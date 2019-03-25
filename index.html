@@ -11,56 +11,46 @@
 
         // 1 задание
 
-        console.log(4 + 2); // 6. Самое простое сложение
-
-        console.log('строка' + ' и строка'); // 'строка и строка'. Если применить + к строкам, то произойдет конкатенация строк
-
-        console.log('4' + 2); // '42'. Если в выражении есть число и строка, то число преобразуется в строку.
+        function factorial(n) {
+            for (var factorial = 1; n > 1; n--) {
+                factorial *= n;
+            }
+            return factorial;
+        }
 
         // 2 задание
 
-        var person = {};
-
-        person.name = 'Андрей';
-
-        console.log(person.age); // undefined
-
-        console.log(person.name); // 'Андрей'
-        delete person.name;
-        console.log(person.name); // undefined
+        function recursiveFactorial(n) {
+            if (n > 1) {
+                return n * recursiveFactorial(--n)
+            }
+            return 1;
+        }
 
         // 3 задание
 
-        var x = 'first x value',
-            y = 'first y value';
-
-        function updateX() {
-            x = 'new x value';
-            var y = 'new y value';
+        function median(sequence) {
+            sequence.sort();
+            return sequence[Math.ceil(sequence.length / 2)];
         }
 
-        console.log(x); // 'first x value'
-        console.log(y); // 'first y value'
-        updateX();
-        console.log(x); // 'new x value'
-        console.log(y); // 'first y value'
+        function measureFunctionSpeed(func) {
+            var measurements = [];
+            for (var i = 0; i < 100; i++) {
+                var t0 = performance.now();
+                func(12557);
+                var t1 = performance.now();
+                measurements.push(t1 - t0);
+            }
+            console.log(func.name, 'исполнилась за', median(measurements).toFixed(8), 'миллисекунд');
+        }
+
+        measureFunctionSpeed(factorial); // factorial исполнилась за 0.01500000 миллисекунд
+        measureFunctionSpeed(recursiveFactorial); // recursiveFactorial исполнилась за 0.13499998 миллисекунд
 
         // 4 задание
 
-        function countWallsArea(roomWidth, roomLength, roomHeight) {
-            var firstWallArea = roomWidth * roomHeight,
-                secondWallArea = roomLength * roomHeight;
-            return (firstWallArea + secondWallArea) * 2
-        }
 
-        function countNeededNumOfWallpaperRolls(roomWidth, roomLength, roomHeight, rollWidth, rollLength) {
-            var wallsArea = countWallsArea(roomWidth, roomLength, roomHeight),
-                rollArea = rollWidth * rollLength,
-                neededNumOfRolls = wallsArea / rollArea;
-            return Math.ceil(neededNumOfRolls)
-        }
-
-        console.log(countNeededNumOfWallpaperRolls(13, 18, 3.5, 1, 6)); // 37
     </script>
 </body>
 </html>
