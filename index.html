@@ -38,7 +38,7 @@
             var measurements = [];
             for (var i = 0; i < 100; i++) {
                 var t0 = performance.now();
-                func(12557);
+                func(12556);
                 var t1 = performance.now();
                 measurements.push(t1 - t0);
             }
@@ -49,8 +49,25 @@
         measureFunctionSpeed(recursiveFactorial); // recursiveFactorial исполнилась за 0.13499998 миллисекунд
 
         // 4 задание
+        // 4.1 Да, угадал) Аргумент по умолчанию
+        // 4.2
+        
+        function usefulFunction(x = 42) {
+            return x;
+        }
+        
+        // 5 задание
+        
+        function getFunction() {
+            return function() {
+                return 24;
+            }
+        }
 
+        var returnedFunction = getFunction();
+        console.log(returnedFunction()); // 24
 
+        console.log(getFunction()()); // Можно еще так. Результат тот же: 24
     </script>
 </body>
 </html>
