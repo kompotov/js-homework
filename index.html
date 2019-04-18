@@ -9,65 +9,30 @@
     <script>
         'use strict';
 
-        // 1 задание
-
-        function factorial(n) {
-            for (var factorial = 1; n > 1; n--) {
-                factorial *= n;
-            }
-            return factorial;
-        }
-
-        // 2 задание
-
-        function recursiveFactorial(n) {
-            if (n > 1) {
-                return n * recursiveFactorial(--n)
-            }
-            return 1;
-        }
-
-        // 3 задание
-
-        function median(sequence) {
-            sequence.sort();
-            return sequence[Math.ceil(sequence.length / 2)];
-        }
-
-        function measureFunctionSpeed(func) {
-            var measurements = [];
-            for (var i = 0; i < 100; i++) {
-                var t0 = performance.now();
-                func(12556);
-                var t1 = performance.now();
-                measurements.push(t1 - t0);
-            }
-            console.log(func.name, 'исполнилась за', median(measurements).toFixed(8), 'миллисекунд');
-        }
-
-        measureFunctionSpeed(factorial); // factorial исполнилась за 0.01500000 миллисекунд
-        measureFunctionSpeed(recursiveFactorial); // recursiveFactorial исполнилась за 0.13499998 миллисекунд
-
-        // 4 задание
-        // 4.1 Да, угадал) Аргумент по умолчанию
-        // 4.2
-        
-        function usefulFunction(x = 42) {
-            return x;
-        }
-        
-        // 5 задание
-        
-        function getFunction() {
-            return function() {
-                return 24;
+        function Calculator(a, b, operator) {
+            this.a = a;
+            this.b = b;
+            this.operator = operator;
+            this.result = null;
+            this.calc = function () {
+                if (this.result !== null) {
+                    return this.result;
+                }
+                switch (this.operator) {
+                    case '+':
+                        this.result = this.a + this.b;
+                        break;
+                    case '-':
+                        this.result = this.a - this.b;
+                        break;
+                }
+                return this.result;
             }
         }
 
-        var returnedFunction = getFunction();
-        console.log(returnedFunction()); // 24
-
-        console.log(getFunction()()); // Можно еще так. Результат тот же: 24
+        var calculator = new Calculator(2, 5, '+');
+        console.log(calculator.calc()); // 7
+        console.log(calculator.calc()); // 7
     </script>
 </body>
 </html>
